@@ -1,0 +1,55 @@
+<div class="container pt-5 col-4">
+    <div class="row">
+<div class="card border border-white">
+    <h4 class="card-header text-center fw-bold">Sign Up</h4>
+    <div class="card-body">
+        <form [formGroup]="rgnFm">
+            <div class="mb-3">
+                <label class="form-label fw-bold">First Name</label>
+                <input type="text" formControlName="firstName" class="form-control" placeholder="First name"/>
+                   <div *ngIf="f.firstName.invalid && f.firstName.touched"> 
+                 <span class="text-danger fs-10">First Name is required</span> 
+                </div>
+                
+                
+            </div>
+            <div class="mb-3">
+                <label class="form-label fw-bold">Last Name</label>
+                <input type="text" formControlName="lastName" class="form-control" placeholder="Last name"/>
+                <div *ngIf="f.lastName.invalid && f.lastName.touched"> 
+                    <span class="text-danger fs-10">Last Name is required</span> 
+                   </div>               
+            </div>
+            <div class="mb-3">
+                <label class="form-label fw-bold">Email address</label>
+                <input type="text" formControlName="emailid" class="form-control"  placeholder="Enter email"/>
+                <span class="fs-10 text-info fw-bold">Note: your email will be a username for login</span>
+                <div *ngIf="f.emailid.invalid && f.emailid.touched"> 
+                    <span class="text-danger fs-10">email id is required</span> 
+                   </div>
+                   <div *ngIf="f.emailid.invalid && f.emailid.dirty"> 
+                    <span class="text-danger fs-10">please check the email format</span> 
+                   </div>
+            </div>
+            <div class="mb-3 mt-2">
+                <label class="form-label fw-bold">Password</label>
+                <input type="password" formControlName="password" class="form-control"  placeholder="Enter password"/>
+                <div *ngIf="f.password.invalid && f.password.touched"> 
+                    <span class="text-danger fs-10">password is required</span> 
+                   </div>
+                   <div *ngIf="f.password.invalid && f.password.dirty"> 
+                    <small class="text-danger">Password length should be minimum of 10 and should contain atleast one capital case,lower case,number and special Character</small> 
+                   </div>
+                   
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary" [disabled]="rgnFm.invalid" (click)="registerEmp()">
+                    Register
+                </button>
+                <a routerLink="../login" class="btn btn-link">Cancel</a>
+            </div>
+        </form>
+    </div>
+    </div>
+    </div>
+</div>

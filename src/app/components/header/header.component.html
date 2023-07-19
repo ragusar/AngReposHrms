@@ -1,0 +1,31 @@
+
+<div class="container col-12">
+<div>{{getuser()}}</div>
+   
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">     
+           <div class="col-3" id="navbarImg">
+                 <img src="/../../assets/images/logo.png" class="w-50 h-75"> 
+            </div>            
+           <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-5 ps-3">
+        <li class="nav-item">
+          <a class="nav-link active fs-3 text-secondary me-5 ms-4" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fs-3 text-secondary me-5 ms-2" routerLink="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fs-3 text-secondary me-5 ms-2" routerLink="/cmpservice">Company Services</a>
+        </li>
+        <li class="nav-item" *ngIf="loggedUser==null">
+          <a class="nav-link fs-3 text-secondary me-5 ms-2" routerLink="/login">Login</a>
+        </li>
+        <li class="nav-item" *ngIf="loggedUser!=null && loggedUser !=''">
+          <a class="nav-link fs-3 text-secondary me-5 ms-2" routerLink="/login" (click)="clearUser()">LogOut</a>         
+        </li>
+       
+       
+      </ul>
+   </div>  
+      </nav>
+</div>

@@ -1,0 +1,33 @@
+
+ <div class="container pt-5 col-4">
+    <div class="row">
+ <div class="card ms-5 text-center col ">
+    <h4 class="card-header">Login</h4>
+    <div class="card-body">
+        <form [formGroup]="lgnFm">
+            <div class="mb-3">
+                
+                <input type="text" name="nm" placeholder="&#xf0e0;   Email" class="form-control fontAwesome" formControlName="lgnm">
+                <div *ngIf="f.lgnm.invalid && f.lgnm.touched"> 
+                    <span class="text-danger fs-10">Login name(your email id) is required</span> 
+                   </div>
+            </div>
+            <div class="mb-3">
+                
+                <input type="password" name="pwd" placeholder="&#61475;  Password" class="form-control fontAwesome" formControlName="pwd">
+                <div *ngIf="f.pwd.invalid && f.pwd.touched"> 
+                    <span class="text-danger fs-10">Enter valid password</span> 
+                   </div>
+            </div>
+            <div>
+                <button [disabled]="lgnFm.invalid" class="btn btn-primary text-uppercase" (click)="login()">
+                    sign in
+                </button>&nbsp;
+                <a routerLink="../register" class="btn btn-link">Register</a>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+</div>
+

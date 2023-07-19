@@ -1,0 +1,142 @@
+ <div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+       
+        <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="/../../assets/images/profile-unknown-person.webp"><span class="font-weight-bold">{{loggedUser}}</span><span class="text-black-50">{{loggedUser}}</span><span> </span></div>
+        </div>
+        <div class="col-md-5 border-right">
+            
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Profile Settings</h4>
+                </div>
+                <form [formGroup]="empProfileFm">
+                <div class="row mt-2">
+                    <div class="col-md-6"><label class="labels">Employee ID</label><input type="text" formControlName="empId" class="form-control"></div>                  
+                </div>
+                <div *ngIf="f.empId.invalid && f.empId.touched"> 
+                    <span class="text-danger fs-10">Employee ID is required</span> 
+                   </div>
+                <div class="row mt-2">
+                    <div class="col-md-3"> <select class="form-select" formControlName="title">
+                        <option selected>Mr.</option>
+                        <option value="1">Mrs.</option>
+                        <option value="2">Ms</option>                       
+                      </select>
+                      
+                    </div>
+                    <div class="col-md-6"><input type="text" formControlName="firstName" class="form-control"></div>
+                    <div *ngIf="f.firstName.invalid && f.firstName.touched"> 
+                        <span class="text-danger fs-10">First Name is required</span> 
+                       </div>
+                    <div class="col-md-6"><label class="labels">Middle Name</label><input type="text" formControlName="middleName" class="form-control"></div>
+                    <div class="col-md-6"><label class="labels">Last Name</label><input type="text" formControlName="lastName" class="form-control"></div>
+                    <div *ngIf="f.lastName.invalid && f.lastName.touched"> 
+                        <span class="text-danger fs-10">Last Name is required</span> 
+                       </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12"><label class="labels">Email ID</label><input type="text" formControlName="email" class="form-control"></div>
+                    <div *ngIf="f.email.invalid && f.email.touched"> 
+                        <span class="text-danger fs-10">Email ID is required</span> 
+                       </div>
+                       <div *ngIf="f.email.invalid && f.email.dirty"> 
+                        <span class="text-danger fs-10">please check the email format</span> 
+                       </div>
+                    <div class="col-md-12"><label class="labels">ID Proof Type</label>
+                        <select formControlName="idType" class="form-select" name="idtype" id="idtype">
+                        <option value="Passport">Passport</option>
+                        <option value="Aadhar">Aadhar</option>
+                        <option value="Driving">Driving License</option>
+                        <option value="Voter" selected>Voter Id</option>
+                        <option value="Pan">Pan Card</option>                       
+                      </select></div>
+                      <div class="col-md-12"><label class="labels">ID proof number</label><input type="text" formControlName="idNum" class="form-control"></div>
+                      <div *ngIf="f.idNum.invalid && f.idNum.touched"> 
+                        <span class="text-danger fs-10">ID proof number is required</span> 
+                       </div>
+                    <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" formControlName="mobNum" class="form-control"></div>
+                    <div *ngIf="f.mobNum.invalid && f.mobNum.touched"> 
+                        <span class="text-danger fs-10">Mobile number is required</span> 
+                       </div>
+                    <div class="col-md-12"><label class="labels">Address</label><textarea formControlName="address" class="form-control"  rows="3"></textarea></div>
+                    <div *ngIf="f.address.invalid && f.address.touched"> 
+                        <span class="text-danger fs-10">Address is required</span> 
+                       </div>
+                    
+                    <div class="col-md-12"><label class="labels">City</label><input type="text" formControlName="city" class="form-control"></div>
+                    <div *ngIf="f.city.invalid && f.city.touched"> 
+                        <span class="text-danger fs-10">city is required</span> 
+                       </div>
+                    <div class="col-md-12"><label class="labels">Country</label>
+                        <select formControlName="country"  class="form-control"  (change)="changeCountry($event)"> 
+                            <option>--Choose Country--</option>
+                            <option *ngFor="let country of countries">{{country.name}}</option>
+                        </select> 
+                    </div>
+                    <div class="col-md-12"><label class="labels">State</label>
+                        <select formControlName="state" class="form-control"> 
+                            <option>--Choose State--</option>
+                            <option *ngFor="let state of states">{{state}}</option>
+                        </select>
+                    </div>
+                    
+                    
+                </div>
+               
+                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
+            </form>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <form [formGroup]="empProfileFm">
+            <div class="p-3 py-5">
+                <div class="d-flex align-items-center"><h4>Employment Details</h4></div><br>
+                <div class="col-md-12"><label class="labels">Name of Organization</label><input type="text" formControlName="nmOfOrg" class="form-control"></div> 
+                <div *ngIf="f.nmOfOrg.invalid && f.nmOfOrg.touched"> 
+                    <span class="text-danger fs-10">Organization Name is required</span> 
+                   </div>
+                <div class="col-md-12"><label class="labels">From Date</label>
+                    <input #fmDt type="date" formControlName="fromDt" class="form-control">
+                    <div *ngIf="f.fromDt.invalid && f.fromDt.touched"> 
+                        <span class="text-danger fs-10">From Date is required</span> 
+                       </div>
+                    <small *ngIf="frmDtInValidMsg && f.fromDt.valid && (f.fromDt.touched && f.fromDt.dirty)" class="text-danger">From date should not be greater than today</small>
+                </div>
+                
+                <div class="col-md-12"><label class="labels">To Date</label><input #toDt type="date" class="form-control"  formControlName="toDt"></div> 
+                <div *ngIf="f.toDt.invalid && f.toDt.touched"> 
+                    <span class="text-danger fs-10">To Date is required</span> 
+                   </div>
+                <small *ngIf="toDtInValidMsg && f.toDt.valid && (f.toDt.touched && f.toDt.dirty)" class="text-danger">Should not be lesser than [from date]</small>
+
+                <div class="col-md-12"><label class="labels">Role</label><input type="text" formControlName="desig" class="form-control"></div>
+                <div *ngIf="f.desig.invalid && f.desig.touched"> 
+                    <span class="text-danger fs-10">Designation is required</span> 
+                   </div>
+                <div class="col-md-12"><label class="labels">Skills</label>
+                    <select formControlName="skls" class="form-control" id="skills">
+                            <option>Angular</option>
+                            <option>Java</option>
+                            <option>.Net</option>
+                            <option>Testing</option>
+                            <option>Designing</option>
+                    </select>
+                  </div> 
+                <div class="col-md-12"><label class="labels">Current CTC</label><input type="text" formControlName="curCtc" class="form-control"></div> 
+                <div *ngIf="f.curCtc.invalid && f.curCtc.touched"> 
+                    <span class="text-danger fs-10">CTC is required</span> 
+                   </div>
+                <div class="col-md-12"><label class="labels">Total Experience</label><input type="text" formControlName="totExp" class="form-control"></div>
+                <div *ngIf="f.totExp.invalid && f.totExp.touched"> 
+                    <span class="text-danger fs-10">Experience is required</span> 
+                   </div>
+            </div>
+        </form>
+        </div>
+        
+    </div>
+</div>
+
+ 

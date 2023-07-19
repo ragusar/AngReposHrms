@@ -1,0 +1,93 @@
+<div class="container pt-5">
+  <div class="row">
+    <div class="col-3">
+        <span class="fw-bold fs-2">Search Employee</span>
+        </div>
+        <div class="col-8">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <span><a routerLink="/reigsEmpByadmin" class="btn btn-link fs-5 fw-bold">Register Employee</a></span>
+    </div>
+  </div>
+    <div class="row pt-4 mb-3">
+        
+            <label for="empid" class="col-2 col-form-label fs-3 fw-bold">Employee ID:</label>
+            <div class="col-10">
+              <input #idIP type="text" class="col-form-control border border-dark fs-3" id="e-id" />
+            </div>
+            <div class="row ms-5">
+            <div class="col ms-5 pt-5"><button class="ms-5 btn btn-success fw-bold rounded" (click)="getRecordOfSelectedEmp()">Search</button></div></div>
+            <div class="row mt-2" *ngIf="searchVal">
+              <table class="table mt-5">        
+                <thead>
+                  <tr>
+                    <th scope="col">Employee ID</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">DOB</th>
+                    <th scope="col">Salary</th>
+                    <th scope="col">Address</th>
+                    
+                  </tr>
+                </thead>
+                 <tbody>
+                   <tr>                 
+                    <td>{{empSingle.id}}</td>
+                    <td>{{empSingle.firstName}}</td>
+                    <td>{{empSingle.lastName}}</td>
+                    <td>{{empSingle.email}}</td>
+                    <td>{{empSingle.contactNumber}}</td>
+                    <td>{{empSingle.age}}</td>
+                    <td>{{empSingle.dob}}</td>
+                    <td>{{empSingle.salary}}</td>
+                    <td>{{empSingle.address}}</td>
+                    <td><button class="btn" (click)="redirectToEditEmp(empSingle.id)"><i class="fa fa-edit text-info"></i>edit</button></td>
+                    <td><button class="btn" (click)="delete(empSingle.id)"><i class="fa fa-trash-o text-danger"></i>delete</button></td>
+                  </tr> 
+                
+                </tbody> 
+              </table>
+            </div>
+            
+            <div class="row mt-5 pt-2">
+            <table class="table mt-5" *ngIf="!searchVal">        
+              <thead>
+                <tr>
+                  <th scope="col">Employee ID</th>
+                  <th scope="col">First Name</th>
+                  <th scope="col">Last Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Phone Number</th>
+                  <th scope="col">Age</th>
+                  <th scope="col">DOB</th>
+                  <th scope="col">Salary</th>
+                  <th scope="col">Address</th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let e of emp">                 
+                  <td>{{e.id}}</td>
+                  <td>{{e.firstName}}</td>
+                  <td>{{e.lastName}}</td>
+                  <td>{{e.email}}</td>
+                  <td>{{e.contactNumber}}</td>
+                  <td>{{e.age}}</td>
+                  <td>{{e.dob}}</td>
+                  <td>{{e.salary}}</td>
+                  <td>{{e.address}}</td>
+                  <td><button class="btn" (click)="redirectToEditEmp(e.id)"><i class="fa fa-edit text-info"></i></button></td>
+                  <td><button class="btn" (click)="delete(e.id)"><i class="fa fa-trash-o text-danger"></i></button></td>
+                </tr>              
+              </tbody>
+            </table>
+          </div>
+    </div>
+</div>
