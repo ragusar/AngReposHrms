@@ -41,13 +41,14 @@ export class EmpProfileComponent {
     // empId:new FormControl('',[Validators.required,Validators.pattern(this.alphaNumPattern)]), 
     empId:new FormControl('1006',[Validators.required,alphaNumPattern]),        //customvalidation function alphaNumPattern
     title:new FormControl('Mr.'),
-    firstName:new FormControl('Angie',[Validators.required,Validators.maxLength(15),onlyAlphabets]),
+    firstName:new FormControl('Angie',[Validators.required,Validators.maxLength(15),onlyAlphabets]),//customvalidation function onlyAlphabets
     middleName:new FormControl('',[Validators.maxLength(15),onlyAlphabets]),
     lastName:new FormControl('Bode',[Validators.required,Validators.maxLength(15),onlyAlphabets]),
     email:new FormControl('Angie.Bode@dummyapis.com',[Validators.required,Validators.email]),
     idType:new FormControl('Voter Id'),
     idNum:new FormControl('56A46896B63SV',[Validators.required]),
-    mobNum:new FormControl('123456890',[Validators.required,onlyNumbers,Validators.minLength(10),Validators.maxLength(10)]),
+    mobNum:new FormControl('123456890',
+          [Validators.required,onlyNumbers,Validators.minLength(10),Validators.maxLength(10)]),//customvalidation function onlynumber
     address:new FormControl('Address1',[Validators.required,Validators.maxLength(200)]),
     city:new FormControl('Chennai',[Validators.required,Validators.maxLength(15)]),
     state:new FormControl('Tamilnadu',[Validators.required]),

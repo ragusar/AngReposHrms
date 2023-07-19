@@ -16,7 +16,7 @@ constructor(private rout:Router, private empServ:EmplService){}
 
 public rgnFm = new FormGroup(
   {
-    firstName:new FormControl('',[Validators.required,onlyAlphabets]),
+    firstName:new FormControl('',[Validators.required,onlyAlphabets]), // custom validation function onlyAlphabets
     lastName:new FormControl('',[Validators.required,onlyAlphabets]),
     emailid:new FormControl('',[Validators.required,Validators.email]),
     password: new FormControl('', [Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}'),Validators.minLength(10)]) 
